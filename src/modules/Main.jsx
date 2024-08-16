@@ -1,6 +1,8 @@
 import { Route, Routes } from "react-router-dom"
 import { Products } from "./Products"
 import { Promo } from "./Promo"
+import { Cart } from "./Cart"
+import { Order } from "./Order"
 
 export const Main = () => {
     return (
@@ -14,7 +16,8 @@ export const Main = () => {
                 }/>
                 <Route path="/cart" element={
                     <>
-                        <p>Корзина</p>
+                        <Cart />
+                        <Order />
                     </>
                 }/>
             </Routes>
