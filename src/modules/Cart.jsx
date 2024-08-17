@@ -1,19 +1,28 @@
-import { products } from "../products";
+import { useCart } from "../context/CartContext";
 import { CartItem } from "./Cartitem";
+import { SkeletonLoader } from "./SkeletonLoader";
 
-export const Cart = () => 
-<section className="cart">
-    <div className="container cart__container">
-        <h2 className="cart__title"> Корзина (6)</h2>
+export const Cart = () => {
+    const { cart } = useCart();
+    const totalPrice = cart ? cart.reduce((acc, item) => item.quantity * item.price + acc, 0) : 0;
+    const totalQuantity = cart ? cart.reduce((acc, item) => item.quantity + acc, 0) : 0;
 
-        <ul className="cart__items">
-            {products.map((item) => (<CartItem key={item.id} data={item} />))}
-        </ul>
+    return (
+        <section className="cart">
+            <div className="container cart__container">
+                <h2 className="cart__title"> Корзина ({totalQuantity})</h2>
 
-        <div className="cart__summary">
-            <h3 className="cart__summary-title">Итого:</h3>
-            <p className="cart__total">2200&nbsp;₽</p>
-            <button className="cart__order-button">Заказать</button>
-        </div>
-    </div>
-</section>
+                <ul className="cart__items">
+                    {cart ? cart.map((item) => (<CartItem key={item.id} data={item} />)): (<SkeletonLoader />)}
+                </ul>
+
+                <div className="cart__summary">
+                    <h3 className="cart__summary-title">Итого:</h3>
+                    <p className="cart__total">{totalPrice}&nbsp;₽</p>
+                    <button className="cart__order-button">Заказать</button>
+                </div>
+            </div>
+        </section>
+    )
+}
+

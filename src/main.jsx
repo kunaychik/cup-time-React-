@@ -4,11 +4,14 @@ import App from './App.jsx'
 import './index.css'
 import 'normalize.css'
 import { ProductProvider } from './context/productContext.jsx'
+import { CartProvider } from './context/CartContext.jsx'
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <ProductProvider>
-      <App />
+      <CartProvider>
+        <App />
+      </CartProvider>
     </ProductProvider>
   </StrictMode>,
 )

@@ -1,7 +1,10 @@
 import { Link, useLocation } from "react-router-dom"
+import { useCart } from "../context/CartContext";
 
 export const Header = () => {
     const location = useLocation();
+    const { cart } = useCart();
+    const totalQuantity = cart ? cart.reduce((acc, item) => item.quantity + acc, 0) : 0;
 
     const getActiveClass = (category) => {
         const currentCategory = new URLSearchParams(location.search).get('category');
@@ -34,7 +37,7 @@ export const Header = () => {
                         </li>
                     </ul>
                 </nav>
-                <Link to="cart" className="header__cart-link">5</Link>
+                <Link to="cart" className="header__cart-link">{totalQuantity}</Link>
             </div>
         </header>
     )
