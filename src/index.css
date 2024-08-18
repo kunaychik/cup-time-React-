@@ -28,6 +28,7 @@ html {
 }
 
 body {
+  min-width: 320px;
   font-family: Inter, sans-serif;
   background-color: #fff;
   font-size: 20px;
@@ -124,12 +125,27 @@ input [type="number"] {
   padding: 10px 4px 3px;
 }
 
+.header__control {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.header__close-btn {
+  display: none;
+}
+
+.header__burger {
+  display: none;
+}
+
 .promo {
   background-color: #6cb9ab;
   color: #fff;
 }
 
 .promo__container {
+  min-height: 600px;
   padding-top: 210px;
   padding-bottom: 80px;
   background-image: url("../image/Слой 1 1.png");
@@ -175,9 +191,10 @@ input [type="number"] {
 }
 
 .product {
+  border-radius: 6px;
+  overflow: hidden;
   font-size: 0;
   background-color: #f2f9f7;
-  min-height: 600px;
   height: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -195,6 +212,7 @@ input [type="number"] {
 
 .product__content {
   padding: 40px 24px 24px;
+  gap: 4px;
   -webkit-box-flex: 1;
       -ms-flex-positive: 1;
           flex-grow: 1;
@@ -208,17 +226,16 @@ input [type="number"] {
 }
 
 .product__title {
-  -webkit-box-flex: 1;
-      -ms-flex-positive: 1;
-          flex-grow: 1;
+  height: 62px;
   font-weight: 400;
   font-size: 24px;
   margin-top: 0;
-  margin-bottom: 4px;
+  margin-bottom: 0;
   overflow: hidden;
   text-overflow: ellipsis;
   display: -webkit-box;
   -webkit-line-clamp: 2;
+  line-clamp: 2;
   -webkit-box-orient: vertical;
 }
 
@@ -277,6 +294,8 @@ input [type="number"] {
   max-width: 750px;
   display: flex;
   border-radius: 6px;
+  max-height: 90vh; 
+  overflow-y: auto;
 }
 
 .modal__img {
@@ -461,8 +480,9 @@ input [type="number"] {
 }
 .cart-item__quantity-button_plus{
   background-image: url("/image/plus.svg");}
+
 .cart-item__quantity-input{
-  width: 30px;
+  width: 26px;
   font-size: 20px;
   text-align: center;
   background-color: transparent;
@@ -506,7 +526,7 @@ input [type="number"] {
   color: #b8b8b8;
 }
 
-.order__input_adress{
+.order__input_address{
   grid-column: 1 / -1;
 }
 .order__payment{
@@ -542,6 +562,40 @@ input [type="number"] {
   background-color: #f2f9f7;
 }
 
+.modal-cart {
+  position: absolute;
+  background-color: #f2f9f7;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80%;
+  max-width: 600px;
+  padding: 20px;
+  border-radius: 6px;
+}
+
+.modal-cart__overlay {
+  background-color: rgba(0, 0, 0, 0.5);
+  position: fixed;
+  inset: 0;
+}
+
+.modal-cart__title {
+  font-size: 36px;
+  margin-top: 0;
+  margin-bottom: 30px;
+}
+
+.modal-cart__button {
+  background-color: #64099b;
+  color:#fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+
 @media (max-width: 1240px) {
   .container {
     padding: 0 42px;
@@ -557,6 +611,7 @@ input [type="number"] {
   }
   
   .promo__container {
+    min-height: 484px;
     padding-top: 172px;
     padding-bottom: 60px;
     background-image: url("../image/coffe.png");
@@ -580,7 +635,7 @@ input [type="number"] {
   /*Modal*/
 
 .product__modal {
-  max-width: 525px;
+  max-width: 550px;
 }
 
 .modal__img {
@@ -591,6 +646,10 @@ input [type="number"] {
   padding: 24px;
   min-width: 300px;
   gap: 31px;
+}
+
+.modal__closelink {
+  padding: 16px;
 }
 
 .modal__title {
@@ -678,7 +737,7 @@ input [type="number"] {
     padding: 80px 0;
   }
 
-  .product__title {
+  .products__title {
     font-size: 36px;
     margin-bottom: 24px;
   }
@@ -694,6 +753,7 @@ input [type="number"] {
 
   .product__title {
     font-size: 20px;
+    height: 48px;
   }
 
   .product__price {
@@ -842,12 +902,49 @@ input [type="number"] {
     display: none;
   }
 
+  .header__burger {
+    display: block;
+    width: 28px;
+    height: 28px;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+  }
+
+  .header__nav.active {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    overflow: hidden;
+    inset: 0;
+    height: 100vh;
+    background-color: #6cb9ab;
+  }
+
+  .header__menu {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .header__close-btn {
+    position: absolute;
+    top: 20px;
+    right: 16px;
+    display: block;
+    width: 28px;
+    height: 28px;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+  }
+
   .promo__container {
     padding-top: 89px;
     padding-bottom: 249px;
     background-position: center bottom;
     background-size: 145px 229px;
-    min-height: auto;
+    min-height: 420px;
   }
   
   .promo__title {
@@ -865,7 +962,7 @@ input [type="number"] {
   }
 
   .products__list {
-    grid-template-columns: repeat(2fr 1fr);
+    grid-template-columns: repeat(2, 1fr);
     gap: 8px;
   }
 
@@ -880,6 +977,7 @@ input [type="number"] {
 
   .product__title {
     font-size: 16px;
+    height: 40px;
   }
 
   .footer {
