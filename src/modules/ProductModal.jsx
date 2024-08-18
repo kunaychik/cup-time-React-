@@ -67,7 +67,7 @@ export const ProductModal = ({isOpen, onRequestClose, data}) => {
                 <div className="modal__quantity">
                     <div className="modal-item__quantity">
                         <button className="cart-item__quantity-button cart-item__quantity-button_minus" onClick={handleDecrease}></button>
-                        <input className="cart-item__quantity-input" type="number" value={quantity} readOnly/>
+                        <input className="cart-item__quantity-input" type="text" value={quantity} readOnly/>
                         <button className="cart-item__quantity-button cart-item__quantity-button_plus" onClick={handleIncrease}></button>
                     </div>
                     <button className="modal__quantity-link" onClick={handleAddToCart}>Добавить</button>
